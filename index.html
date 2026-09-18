@@ -3,14 +3,9 @@
 <head>
 
 <meta charset="UTF-8">
-
-<meta
-    name="viewport"
-    content="width=device-width, initial-scale=1.0"
->
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
 <title>MOHAMED DRIVE</title>
-
 
 <style>
 
@@ -26,21 +21,19 @@
 
 
 /* =====================================================
-   VARIABLES
+   COLORS
 ===================================================== */
 
 :root{
 
-    --bg:#05060b;
+    --orange:#ff641f;
+    --orange-light:#ffad5a;
 
-    --orange:#ff6a21;
-    --orange2:#ff9b42;
+    --blue:#5de4ff;
+    --purple:#987dff;
 
-    --blue:#55dfff;
-    --violet:#947cff;
-
-    --white:#f7f8ff;
-    --gray:#9ba4bd;
+    --white:#ffffff;
+    --gray:#9ca6bf;
 
 }
 
@@ -63,16 +56,19 @@ body{
     overflow-x:hidden;
 
 
+    /*
+       Naruto background
+    */
+
     background:
 
         linear-gradient(
             rgba(3,5,12,.72),
-            rgba(3,5,12,.88)
+            rgba(3,5,12,.91)
         ),
 
         url("https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=2400&q=90")
-        center center /
-        cover
+        center / cover
         fixed
         no-repeat;
 
@@ -80,10 +76,10 @@ body{
 
 
 /* =====================================================
-   DARK CINEMATIC OVERLAY
+   CINEMATIC COLOR
 ===================================================== */
 
-body::after{
+body::before{
 
     content:"";
 
@@ -99,21 +95,21 @@ body::after{
     background:
 
         radial-gradient(
-            circle at 15% 25%,
-            rgba(255,90,20,.18),
-            transparent 27%
+            circle at 18% 28%,
+            rgba(255,75,15,.22),
+            transparent 28%
         ),
 
         radial-gradient(
-            circle at 85% 20%,
-            rgba(65,160,255,.12),
+            circle at 85% 22%,
+            rgba(50,160,255,.14),
             transparent 28%
         ),
 
         radial-gradient(
             circle at 50% 100%,
-            rgba(150,70,255,.13),
-            transparent 30%
+            rgba(140,70,255,.15),
+            transparent 35%
         );
 
 }
@@ -123,7 +119,7 @@ body::after{
    GRID
 ===================================================== */
 
-body::before{
+body::after{
 
     content:"";
 
@@ -133,28 +129,30 @@ body::before{
 
     pointer-events:none;
 
-    opacity:.08;
+    opacity:.055;
 
     background-image:
 
         linear-gradient(
-            rgba(255,255,255,.05) 1px,
+            rgba(255,255,255,.08) 1px,
             transparent 1px
         ),
 
         linear-gradient(
             90deg,
-            rgba(255,255,255,.05) 1px,
+            rgba(255,255,255,.08) 1px,
             transparent 1px
         );
 
-    background-size:50px 50px;
+    background-size:55px 55px;
+
+    z-index:-1;
 
 }
 
 
 /* =====================================================
-   AMBIENT LIGHTS
+   FLOATING LIGHTS
 ===================================================== */
 
 .light{
@@ -172,22 +170,22 @@ body::before{
 }
 
 
-.light.one{
+.light.orange{
 
     width:330px;
     height:330px;
 
-    left:-150px;
-    top:15%;
+    left:-140px;
+    top:30%;
 
-    background:#ff5417;
+    background:#ff4d16;
 
     opacity:.17;
 
 }
 
 
-.light.two{
+.light.purple{
 
     width:350px;
     height:350px;
@@ -195,9 +193,98 @@ body::before{
     right:-160px;
     bottom:5%;
 
-    background:#6d42ff;
+    background:#754cff;
 
-    opacity:.16;
+    opacity:.15;
+
+}
+
+
+/* =====================================================
+   CHAKRA PARTICLES
+===================================================== */
+
+.particle{
+
+    position:fixed;
+
+    width:4px;
+    height:4px;
+
+    border-radius:50%;
+
+    background:#ff914d;
+
+    box-shadow:
+        0 0 15px #ff5a20;
+
+    opacity:.6;
+
+    animation:
+        particleMove
+        linear
+        infinite;
+
+    pointer-events:none;
+
+}
+
+
+.p1{
+    left:12%;
+    bottom:-10px;
+    animation-duration:8s;
+}
+
+.p2{
+    left:30%;
+    bottom:-10px;
+    animation-duration:11s;
+    animation-delay:2s;
+}
+
+.p3{
+    left:65%;
+    bottom:-10px;
+    animation-duration:9s;
+    animation-delay:1s;
+}
+
+.p4{
+    left:84%;
+    bottom:-10px;
+    animation-duration:12s;
+    animation-delay:4s;
+}
+
+
+@keyframes particleMove{
+
+    0%{
+        transform:
+            translateY(0)
+            translateX(0);
+
+        opacity:0;
+    }
+
+    20%{
+        opacity:.7;
+    }
+
+    80%{
+        opacity:.5;
+    }
+
+    100%{
+
+        transform:
+            translateY(-100vh)
+            translateX(50px);
+
+        opacity:0;
+
+    }
 
 }
 
@@ -216,9 +303,9 @@ body::before{
     margin:auto;
 
     padding:
-        32px
+        30px
         0
-        65px;
+        60px;
 
 }
 
@@ -235,7 +322,7 @@ header{
 
     justify-content:space-between;
 
-    margin-bottom:75px;
+    margin-bottom:70px;
 
 }
 
@@ -248,16 +335,16 @@ header{
 
     letter-spacing:2px;
 
-    text-shadow:
-        0 0 25px
-        rgba(255,100,30,.15);
-
 }
 
 
 .logo span{
 
     color:var(--orange);
+
+    text-shadow:
+        0 0 25px
+        rgba(255,90,25,.3);
 
 }
 
@@ -281,16 +368,16 @@ header{
 
     border:
         1px solid
-        rgba(255,255,255,.11);
+        rgba(255,255,255,.12);
 
     backdrop-filter:
         blur(20px);
 
-    color:#baffdd;
-
     font-size:10px;
 
     letter-spacing:1px;
+
+    color:#baffdd;
 
 }
 
@@ -302,11 +389,11 @@ header{
 
     border-radius:50%;
 
-    background:#63eda8;
+    background:#65efaa;
 
     box-shadow:
         0 0 15px
-        #63eda8;
+        #65efaa;
 
 }
 
@@ -336,14 +423,14 @@ header{
 
     border-radius:30px;
 
-    color:#ffd3bb;
+    color:#ffd6bd;
 
     background:
-        rgba(255,90,20,.07);
+        rgba(255,80,20,.07);
 
     border:
         1px solid
-        rgba(255,130,70,.24);
+        rgba(255,130,70,.25);
 
     backdrop-filter:
         blur(20px);
@@ -352,11 +439,7 @@ header{
 
     letter-spacing:1.7px;
 
-    margin-bottom:26px;
-
-    box-shadow:
-        0 0 25px
-        rgba(255,90,20,.05);
+    margin-bottom:25px;
 
 }
 
@@ -384,10 +467,11 @@ h1{
         linear-gradient(
             100deg,
             #ffffff 5%,
-            #ffd8c1 35%,
-            #ff873b 65%,
-            #ff5220 100%
+            #ffe0c9 35%,
+            #ff913f 65%,
+            #ff5120 100%
         );
+
 
     -webkit-background-clip:text;
 
@@ -397,22 +481,19 @@ h1{
 
 
     text-shadow:
-        0 0 50px
-        rgba(255,90,30,.15);
+
+        0 0 55px
+        rgba(255,90,30,.18);
 
 }
 
 
-/* =====================================================
-   SUBTITLE
-===================================================== */
-
 .subtitle{
 
-    max-width:600px;
+    max-width:580px;
 
     margin:
-        25px
+        23px
         auto
         0;
 
@@ -426,7 +507,7 @@ h1{
 
 
 /* =====================================================
-   MAIN GLASS CARD
+   GLASS CARD
 ===================================================== */
 
 .drive-card{
@@ -451,14 +532,14 @@ h1{
 
         linear-gradient(
             145deg,
-            rgba(15,18,29,.74),
-            rgba(18,15,27,.45)
+            rgba(13,16,27,.76),
+            rgba(19,15,25,.48)
         );
 
 
     border:
         1px solid
-        rgba(255,255,255,.14);
+        rgba(255,255,255,.15);
 
 
     backdrop-filter:
@@ -469,7 +550,7 @@ h1{
     box-shadow:
 
         0 40px 110px
-        rgba(0,0,0,.60),
+        rgba(0,0,0,.65),
 
         0 0 60px
         rgba(255,80,20,.07),
@@ -482,7 +563,7 @@ h1{
 
 
 /* =====================================================
-   ANIMATED TOP LINE
+   MOVING BORDER
 ===================================================== */
 
 .drive-card::before{
@@ -506,14 +587,14 @@ h1{
             90deg,
             transparent,
             var(--orange),
-            var(--orange2),
+            var(--orange-light),
             var(--blue),
             transparent
         );
 
 
     animation:
-        topLine
+        borderMove
         6s
         linear
         infinite;
@@ -521,7 +602,7 @@ h1{
 }
 
 
-@keyframes topLine{
+@keyframes borderMove{
 
     from{
         transform:
@@ -553,13 +634,11 @@ h1{
         auto
         24px;
 
-
     display:flex;
 
     align-items:center;
 
     justify-content:center;
-
 
     border-radius:36px;
 
@@ -569,7 +648,7 @@ h1{
         linear-gradient(
             145deg,
             rgba(255,255,255,.11),
-            rgba(255,80,20,.045)
+            rgba(255,80,20,.05)
         );
 
 
@@ -581,15 +660,15 @@ h1{
     box-shadow:
 
         0 0 55px
-        rgba(255,90,30,.13),
+        rgba(255,90,30,.14),
 
         inset
         0 0 30px
-        rgba(255,255,255,.035);
+        rgba(255,255,255,.04);
 
 
     animation:
-        logoFloat
+        floatLogo
         4s
         ease-in-out
         infinite;
@@ -600,7 +679,7 @@ h1{
 }
 
 
-@keyframes logoFloat{
+@keyframes floatLogo{
 
     0%,
     100%{
@@ -616,10 +695,6 @@ h1{
 }
 
 
-/* =====================================================
-   DRIVE SVG
-===================================================== */
-
 .drive-logo svg{
 
     width:72px;
@@ -630,14 +705,14 @@ h1{
 
         drop-shadow(
             0 0 18px
-            rgba(80,205,255,.45)
+            rgba(80,210,255,.45)
         );
 
 }
 
 
 /* =====================================================
-   MOVING SHINE
+   LOGO SHINE
 ===================================================== */
 
 .shine{
@@ -672,7 +747,7 @@ h1{
 
     animation:
         shine
-        3.7s
+        3.5s
         infinite;
 
 }
@@ -694,7 +769,7 @@ h1{
 
 
 /* =====================================================
-   FOLDER TITLE
+   FOLDER
 ===================================================== */
 
 .folder-title{
@@ -735,14 +810,12 @@ h1{
 
     gap:13px;
 
-    margin-bottom:27px;
+    margin-bottom:28px;
 
 }
 
 
 .file{
-
-    position:relative;
 
     min-height:115px;
 
@@ -750,48 +823,16 @@ h1{
 
     border-radius:19px;
 
-
     background:
-        rgba(3,5,12,.47);
-
+        rgba(3,5,12,.50);
 
     border:
         1px solid
         rgba(255,255,255,.085);
 
-
     cursor:pointer;
 
-    transition:
-        .3s;
-
-
-    overflow:hidden;
-
-}
-
-
-.file::after{
-
-    content:"";
-
-    position:absolute;
-
-    width:100px;
-
-    height:100px;
-
-    right:-50px;
-
-    top:-50px;
-
-    border-radius:50%;
-
-    background:
-        rgba(255,90,20,.08);
-
-    filter:
-        blur(25px);
+    transition:.3s;
 
 }
 
@@ -801,18 +842,16 @@ h1{
     transform:
         translateY(-6px);
 
-
     border-color:
-        rgba(255,120,60,.35);
-
+        rgba(255,120,60,.36);
 
     box-shadow:
 
         0 18px 45px
-        rgba(0,0,0,.40),
+        rgba(0,0,0,.45),
 
         0 0 25px
-        rgba(255,80,20,.07);
+        rgba(255,80,20,.08);
 
 }
 
@@ -859,14 +898,15 @@ h1{
 .loading{
 
     grid-column:
-        1 /
-        -1;
+        1 / -1;
 
-    padding:40px;
+    padding:35px;
 
     color:#77819c;
 
     font-size:12px;
+
+    text-align:center;
 
 }
 
@@ -884,16 +924,13 @@ h1{
 
     border-radius:50%;
 
-
     border:
         2px
         solid
         rgba(255,255,255,.10);
 
-
     border-top-color:
         var(--orange);
-
 
     animation:
         spin
@@ -924,8 +961,6 @@ h1{
 
     justify-content:center;
 
-    align-items:center;
-
     gap:12px;
 
     flex-wrap:wrap;
@@ -933,9 +968,16 @@ h1{
 }
 
 
-button{
+button,
+a.drive-button{
 
-    border:none;
+    display:inline-flex;
+
+    align-items:center;
+
+    justify-content:center;
+
+    text-decoration:none;
 
     cursor:pointer;
 
@@ -949,33 +991,33 @@ button{
 
     font-weight:800;
 
-    transition:
-        .25s;
+    transition:.25s;
 
 }
 
 
-/* OPEN */
+/* =====================================================
+   OPEN BUTTON
+===================================================== */
 
 .open{
 
-    color:white;
-
+    color:#fff;
 
     background:
 
         linear-gradient(
             135deg,
-            #ff9c45,
-            #ff6325,
-            #d83b16
+            #ff9d47,
+            #ff6324,
+            #d83915
         );
 
 
     box-shadow:
 
         0 13px 38px
-        rgba(255,80,20,.28);
+        rgba(255,80,20,.30);
 
 }
 
@@ -985,16 +1027,17 @@ button{
     transform:
         translateY(-3px);
 
-
     box-shadow:
 
-        0 20px 50px
-        rgba(255,80,20,.45);
+        0 20px 52px
+        rgba(255,80,20,.48);
 
 }
 
 
-/* REFRESH */
+/* =====================================================
+   SECOND BUTTON
+===================================================== */
 
 .refresh{
 
@@ -1060,8 +1103,7 @@ button{
 
     text-align:left;
 
-    transition:
-        .3s;
+    transition:.3s;
 
 }
 
@@ -1072,7 +1114,7 @@ button{
         translateY(-4px);
 
     border-color:
-        rgba(255,110,50,.20);
+        rgba(255,110,50,.22);
 
 }
 
@@ -1135,73 +1177,31 @@ footer{
         padding-top:25px;
     }
 
-
     header{
         margin-bottom:50px;
     }
-
 
     .status{
         display:none;
     }
 
-
     h1{
-
         font-size:53px;
-
         letter-spacing:-3px;
-
     }
-
-
-    .subtitle{
-
-        font-size:13px;
-
-    }
-
 
     .drive-card{
-
         padding:
             28px
             18px;
-
-        border-radius:27px;
-
     }
-
 
     .files-container{
-
         grid-template-columns:1fr;
-
     }
-
 
     .features{
-
         grid-template-columns:1fr;
-
-    }
-
-}
-
-
-/* =====================================================
-   VERY SMALL SCREENS
-===================================================== */
-
-@media(max-width:400px){
-
-    h1{
-        font-size:45px;
-    }
-
-    .drive-logo{
-        width:110px;
-        height:110px;
     }
 
 }
@@ -1214,17 +1214,26 @@ footer{
 <body>
 
 
-<div class="light one"></div>
+<!-- AMBIENT LIGHTS -->
 
-<div class="light two"></div>
+<div class="light orange"></div>
+<div class="light purple"></div>
+
+
+<!-- PARTICLES -->
+
+<div class="particle p1"></div>
+<div class="particle p2"></div>
+<div class="particle p3"></div>
+<div class="particle p4"></div>
 
 
 <div class="container">
 
 
-<!-- ===================================================
+<!-- =====================================================
      HEADER
-=================================================== -->
+===================================================== -->
 
 <header>
 
@@ -1248,9 +1257,9 @@ footer{
 
 
 
-<!-- ===================================================
+<!-- =====================================================
      HERO
-=================================================== -->
+===================================================== -->
 
 <section class="hero">
 
@@ -1266,7 +1275,6 @@ footer{
     <h1>
 
         MOHAMED<br>
-
         DRIVE
 
     </h1>
@@ -1276,20 +1284,20 @@ footer{
     <p class="subtitle">
 
         Your Google Drive files
-        in a cinematic glass interface.
+        in a cinematic anime interface.
 
     </p>
 
 
 
-<!-- ===================================================
+<!-- =====================================================
      DRIVE CARD
-=================================================== -->
+===================================================== -->
 
 <div class="drive-card">
 
 
-    <!-- DRIVE LOGO -->
+    <!-- GOOGLE DRIVE LOGO -->
 
     <div class="drive-logo">
 
@@ -1319,8 +1327,6 @@ footer{
 
 
 
-    <!-- FOLDER TITLE -->
-
     <div class="folder-title">
 
         My Google Drive
@@ -1333,15 +1339,13 @@ footer{
         class="folder-info"
         id="folderInfo">
 
-        Loading Drive content...
+        Google Drive Folder
 
     </div>
 
 
 
-    <!-- =================================================
-         FILES WILL APPEAR HERE
-    ================================================= -->
+    <!-- FILE AREA -->
 
     <div
         class="files-container"
@@ -1352,7 +1356,7 @@ footer{
 
             <div class="spinner"></div>
 
-            Loading Drive content...
+            Ready to access your Drive files.
 
         </div>
 
@@ -1361,23 +1365,38 @@ footer{
 
 
 
-    <!-- BUTTONS -->
+    <!-- =================================================
+         BUTTONS
+    ================================================= -->
 
     <div class="buttons">
 
 
-        <button
-            class="open"
-            onclick="openDrive()">
+        <!--
+             DIRECT GOOGLE DRIVE LINK
+
+             This uses a normal <a> instead of
+             window.open() so the button works
+             more reliably on mobile browsers.
+        -->
+
+        <a
+            class="drive-button open"
+            href="https://drive.google.com/drive/folders/1yMuL-AUheVRhz0XHdOcAwX9YCxTVJ0Up?usp=drive_link"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
 
             OPEN GOOGLE DRIVE ↗
 
-        </button>
+        </a>
+
 
 
         <button
             class="refresh"
-            onclick="loadFiles()">
+            onclick="loadFiles()"
+        >
 
             REFRESH
 
@@ -1391,9 +1410,9 @@ footer{
 
 
 
-<!-- ===================================================
+<!-- =====================================================
      FEATURES
-=================================================== -->
+===================================================== -->
 
 <div class="features">
 
@@ -1411,8 +1430,8 @@ footer{
         <p>
 
             Premium glass interface
-            with cinematic depth,
-            reflections and neon lighting.
+            with cinematic reflections
+            and depth.
 
         </p>
 
@@ -1427,7 +1446,7 @@ footer{
         </div>
 
         <h3>
-            NARUTO THEME
+            NARUTO STYLE
         </h3>
 
         <p>
@@ -1454,9 +1473,8 @@ footer{
 
         <p>
 
-            Open your original
-            Google Drive folder
-            instantly.
+            One click takes you directly
+            to your Google Drive folder.
 
         </p>
 
@@ -1484,7 +1502,7 @@ footer{
 <script>
 
 /* =====================================================
-   GOOGLE DRIVE FOLDER
+   DRIVE URL
 ===================================================== */
 
 const DRIVE_URL =
@@ -1500,27 +1518,17 @@ const FOLDER_ID =
 
 
 /* =====================================================
-   GOOGLE DRIVE API KEY
+   OPTIONAL GOOGLE DRIVE API KEY
+=====================================================
 
-   ضع API KEY هنا عندما نجهز الربط.
+   Leave empty for now.
+
+   If you later create a Google Drive API key,
+   put it between the quotes.
+
 ===================================================== */
 
 const API_KEY = "";
-
-
-/* =====================================================
-   OPEN DRIVE
-===================================================== */
-
-function openDrive(){
-
-    window.open(
-        DRIVE_URL,
-        "_blank",
-        "noopener,noreferrer"
-    );
-
-}
 
 
 /* =====================================================
@@ -1541,42 +1549,5 @@ async function loadFiles(){
         );
 
 
-    /* -----------------------------------------------
-       API KEY NOT ADDED
-    ------------------------------------------------ */
-
-    if(!API_KEY){
-
-        container.innerHTML = `
-
-            <div
-                class="loading"
-                style="
-                    grid-column:1/-1;
-                    text-align:center;
-                "
-            >
-
-                <div
-                    style="
-                        font-size:28px;
-                        margin-bottom:12px;
-                    "
-                >
-                    ☁
-                </div>
-
-                Google Drive folder
-
-                <br>
-
-                Click "OPEN GOOGLE DRIVE"
-                to access the files.
-
-            </div>
-
-        `;
-
-
-        info.innerText =
-            "Google Drive fold
+    /*
+       Witho
