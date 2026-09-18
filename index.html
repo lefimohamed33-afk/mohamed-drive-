@@ -1,0 +1,1019 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>MOHAMED DRIVE</title>
+
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --bg:#050711;
+    --cyan:#55e7ff;
+    --blue:#5d8cff;
+    --violet:#9b7cff;
+    --white:#f5f7ff;
+    --gray:#929bb8;
+}
+
+body{
+    min-height:100vh;
+    font-family:Arial,Helvetica,sans-serif;
+    color:var(--white);
+    overflow-x:hidden;
+
+    background:
+        radial-gradient(circle at 15% 15%,rgba(65,120,255,.20),transparent 28%),
+        radial-gradient(circle at 85% 15%,rgba(0,220,255,.14),transparent 25%),
+        radial-gradient(circle at 50% 100%,rgba(135,75,255,.18),transparent 35%),
+        var(--bg);
+}
+
+/* Background grid */
+
+body::before{
+    content:"";
+    position:fixed;
+    inset:0;
+    pointer-events:none;
+    opacity:.11;
+
+    background-image:
+        linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+
+    background-size:50px 50px;
+}
+
+/* Ambient lights */
+
+.light{
+    position:fixed;
+    border-radius:50%;
+    filter:blur(90px);
+    pointer-events:none;
+}
+
+.light.one{
+    width:300px;
+    height:300px;
+    background:#316cff;
+    left:-140px;
+    top:15%;
+    opacity:.22;
+}
+
+.light.two{
+    width:330px;
+    height:330px;
+    background:#7c40ff;
+    right:-150px;
+    bottom:5%;
+    opacity:.20;
+}
+
+/* Container */
+
+.container{
+    width:min(1100px,92%);
+    margin:auto;
+    padding:32px 0 60px;
+}
+
+/* Header */
+
+header{
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    margin-bottom:70px;
+}
+
+.logo{
+    font-size:20px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:var(--cyan);
+}
+
+.status{
+    display:flex;
+    align-items:center;
+    gap:8px;
+
+    padding:9px 14px;
+
+    border-radius:30px;
+
+    background:rgba(255,255,255,.04);
+    border:1px solid rgba(255,255,255,.10);
+
+    backdrop-filter:blur(15px);
+
+    color:#baffdc;
+    font-size:10px;
+    letter-spacing:1px;
+}
+
+.status-dot{
+    width:7px;
+    height:7px;
+    border-radius:50%;
+    background:#64edaa;
+    box-shadow:0 0 15px #64edaa;
+}
+
+/* Hero */
+
+.hero{
+    text-align:center;
+}
+
+.badge{
+    display:inline-block;
+
+    padding:9px 16px;
+
+    border-radius:30px;
+
+    color:#b9dcff;
+
+    background:rgba(255,255,255,.045);
+    border:1px solid rgba(255,255,255,.10);
+
+    backdrop-filter:blur(15px);
+
+    font-size:10px;
+    letter-spacing:1.5px;
+
+    margin-bottom:25px;
+}
+
+h1{
+    font-size:clamp(48px,8vw,86px);
+    line-height:.94;
+    letter-spacing:-4px;
+
+    background:
+        linear-gradient(
+            100deg,
+            #fff,
+            #b9dcff,
+            #62eaff,
+            #a789ff
+        );
+
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    max-width:550px;
+    margin:22px auto 0;
+
+    color:var(--gray);
+
+    font-size:14px;
+    line-height:1.7;
+}
+
+/* Main glass */
+
+.drive-card{
+    position:relative;
+    overflow:hidden;
+
+    margin:50px auto 0;
+
+    max-width:920px;
+
+    padding:38px;
+
+    border-radius:32px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.105),
+            rgba(255,255,255,.035)
+        );
+
+    border:1px solid rgba(255,255,255,.13);
+
+    backdrop-filter:blur(30px);
+
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.45),
+        inset 0 1px rgba(255,255,255,.10);
+}
+
+/* Animated line */
+
+.drive-card::before{
+    content:"";
+
+    position:absolute;
+
+    top:0;
+    left:-60%;
+
+    width:220%;
+    height:2px;
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            var(--cyan),
+            var(--violet),
+            transparent
+        );
+
+    animation:moveLine 6s linear infinite;
+}
+
+@keyframes moveLine{
+    from{
+        transform:translateX(-30%);
+    }
+    to{
+        transform:translateX(30%);
+    }
+}
+
+/* Drive logo */
+
+.drive-logo{
+    position:relative;
+
+    width:120px;
+    height:120px;
+
+    margin:0 auto 22px;
+
+    display:flex;
+    align-items:center;
+    justify-content:center;
+
+    border-radius:34px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.10),
+            rgba(255,255,255,.025)
+        );
+
+    border:1px solid rgba(255,255,255,.12);
+
+    box-shadow:
+        0 0 50px rgba(75,180,255,.14),
+        inset 0 0 30px rgba(255,255,255,.04);
+
+    animation:float 4s ease-in-out infinite;
+
+    overflow:hidden;
+}
+
+@keyframes float{
+    0%,100%{
+        transform:translateY(0);
+    }
+
+    50%{
+        transform:translateY(-8px);
+    }
+}
+
+.drive-logo svg{
+    width:70px;
+    height:70px;
+
+    filter:
+        drop-shadow(0 0 18px rgba(75,200,255,.40));
+}
+
+/* Shine */
+
+.shine{
+    position:absolute;
+
+    width:35%;
+    height:170%;
+
+    left:-80%;
+    top:-35%;
+
+    transform:rotate(25deg);
+
+    background:
+        linear-gradient(
+            90deg,
+            transparent,
+            rgba(255,255,255,.95),
+            transparent
+        );
+
+    filter:blur(4px);
+
+    animation:shine 3.5s infinite;
+}
+
+@keyframes shine{
+    0%,35%{
+        left:-80%;
+    }
+
+    75%,100%{
+        left:140%;
+    }
+}
+
+/* Folder title */
+
+.folder-title{
+    font-size:22px;
+    font-weight:750;
+
+    margin-bottom:8px;
+}
+
+.folder-info{
+    color:#7f89a6;
+    font-size:11px;
+
+    margin-bottom:28px;
+}
+
+/* Files */
+
+.files-container{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:13px;
+
+    text-align:left;
+
+    margin-bottom:25px;
+}
+
+.file{
+    position:relative;
+
+    padding:18px;
+
+    min-height:105px;
+
+    border-radius:18px;
+
+    background:rgba(0,0,0,.16);
+
+    border:1px solid rgba(255,255,255,.08);
+
+    transition:.3s;
+
+    overflow:hidden;
+}
+
+.file:hover{
+    transform:translateY(-5px);
+
+    border-color:rgba(85,231,255,.28);
+
+    box-shadow:
+        0 15px 35px rgba(0,0,0,.25);
+}
+
+.file-icon{
+    font-size:22px;
+    margin-bottom:12px;
+}
+
+.file-name{
+    font-size:12px;
+    font-weight:700;
+
+    white-space:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+}
+
+.file-type{
+    color:#707b99;
+
+    font-size:10px;
+
+    margin-top:6px;
+}
+
+/* Loading */
+
+.loading{
+    padding:35px;
+
+    color:#78839f;
+
+    font-size:12px;
+}
+
+.spinner{
+    width:25px;
+    height:25px;
+
+    margin:0 auto 12px;
+
+    border-radius:50%;
+
+    border:2px solid rgba(255,255,255,.1);
+
+    border-top-color:var(--cyan);
+
+    animation:spin .8s linear infinite;
+}
+
+@keyframes spin{
+    to{
+        transform:rotate(360deg);
+    }
+}
+
+/* Buttons */
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:12px;
+    flex-wrap:wrap;
+}
+
+button{
+    border:none;
+    cursor:pointer;
+
+    padding:14px 25px;
+
+    border-radius:15px;
+
+    font-size:12px;
+    font-weight:750;
+
+    transition:.25s;
+}
+
+.open{
+    color:#03101b;
+
+    background:
+        linear-gradient(
+            135deg,
+            #67efff,
+            #6da7ff,
+            #a98aff
+        );
+
+    box-shadow:
+        0 12px 35px rgba(74,170,255,.25);
+}
+
+.open:hover{
+    transform:translateY(-3px);
+
+    box-shadow:
+        0 18px 45px rgba(74,170,255,.4);
+}
+
+.refresh{
+    color:#dce5ff;
+
+    background:rgba(255,255,255,.055);
+
+    border:1px solid rgba(255,255,255,.11);
+}
+
+.refresh:hover{
+    background:rgba(255,255,255,.10);
+}
+
+/* Features */
+
+.features{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+
+    gap:15px;
+
+    margin-top:20px;
+}
+
+.feature{
+    padding:20px;
+
+    border-radius:21px;
+
+    background:rgba(255,255,255,.035);
+
+    border:1px solid rgba(255,255,255,.07);
+
+    backdrop-filter:blur(15px);
+
+    text-align:left;
+}
+
+.feature-icon{
+    font-size:21px;
+    margin-bottom:11px;
+}
+
+.feature h3{
+    font-size:12px;
+    margin-bottom:7px;
+}
+
+.feature p{
+    color:#7f89a5;
+
+    font-size:10px;
+    line-height:1.7;
+}
+
+/* Footer */
+
+footer{
+    text-align:center;
+
+    margin-top:30px;
+
+    color:#505a73;
+
+    font-size:9px;
+
+    letter-spacing:1.5px;
+}
+
+/* Mobile */
+
+@media(max-width:700px){
+
+    header{
+        margin-bottom:50px;
+    }
+
+    .status{
+        display:none;
+    }
+
+    h1{
+        font-size:53px;
+    }
+
+    .drive-card{
+        padding:27px 18px;
+    }
+
+    .files-container{
+        grid-template-columns:1fr;
+    }
+
+    .features{
+        grid-template-columns:1fr;
+    }
+}
+</style>
+</head>
+
+
+<body>
+
+<div class="light one"></div>
+<div class="light two"></div>
+
+
+<div class="container">
+
+<header>
+
+    <div class="logo">
+        MOHAMED <span>DRIVE</span>
+    </div>
+
+    <div class="status">
+        <div class="status-dot"></div>
+        ONLINE
+    </div>
+
+</header>
+
+
+<section class="hero">
+
+    <div class="badge">
+        GOOGLE DRIVE • FILE PORTAL
+    </div>
+
+
+    <h1>
+        MOHAMED<br>
+        DRIVE
+    </h1>
+
+
+    <p class="subtitle">
+        Your files, beautifully organized in one premium interface.
+    </p>
+
+
+    <div class="drive-card">
+
+        <!-- Drive logo -->
+
+        <div class="drive-logo">
+
+            <div class="shine"></div>
+
+            <svg viewBox="0 0 90 90">
+
+                <polygon
+                    points="32,12 48,12 76,60 60,60"
+                    fill="#55b9ff"
+                />
+
+                <polygon
+                    points="32,12 14,44 23,60 41,28"
+                    fill="#62df9a"
+                />
+
+                <polygon
+                    points="23,60 76,60 67,76 14,76"
+                    fill="#a07dff"
+                />
+
+            </svg>
+
+        </div>
+
+
+        <div class="folder-title">
+            My Google Drive
+        </div>
+
+
+        <div class="folder-info" id="folderInfo">
+            Loading files...
+        </div>
+
+
+        <!-- Files will appear here -->
+
+        <div
+            class="files-container"
+            id="filesContainer">
+
+            <div class="loading">
+
+                <div class="spinner"></div>
+
+                Loading Drive content...
+
+            </div>
+
+        </div>
+
+
+        <div class="buttons">
+
+            <button
+                class="open"
+                onclick="openDrive()">
+
+                OPEN GOOGLE DRIVE ↗
+
+            </button>
+
+
+            <button
+                class="refresh"
+                onclick="loadFiles()">
+
+                REFRESH
+
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <div class="features">
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ◈
+            </div>
+
+            <h3>
+                LIQUID GLASS
+            </h3>
+
+            <p>
+                Premium glass interface with
+                futuristic depth and reflections.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ✦
+            </div>
+
+            <h3>
+                LIVE FILES
+            </h3>
+
+            <p>
+                Display your Google Drive
+                content directly on the homepage.
+            </p>
+
+        </div>
+
+
+        <div class="feature">
+
+            <div class="feature-icon">
+                ↗
+            </div>
+
+            <h3>
+                DIRECT ACCESS
+            </h3>
+
+            <p>
+                Open the original Drive folder
+                with one click.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<footer>
+    MOHAMED DRIVE • GOOGLE DRIVE PORTAL
+</footer>
+
+</div>
+
+
+<script>
+
+/*
+=========================================================
+YOUR GOOGLE DRIVE FOLDER
+=========================================================
+*/
+
+const DRIVE_URL =
+"https://drive.google.com/drive/folders/1yMuL-AUheVRhz0XHdOcAwX9YCxTVJ0Up?usp=drive_link";
+
+
+/*
+=========================================================
+GOOGLE DRIVE API
+
+ضع API KEY هنا إذا أردت جلب أسماء الملفات
+وتفاصيلها تلقائيًا من Google Drive.
+=========================================================
+*/
+
+const API_KEY = "";
+
+const FOLDER_ID =
+"1yMuL-AUheVRhz0XHdOcAwX9YCxTVJ0Up";
+
+
+/*
+=========================================================
+OPEN DRIVE
+=========================================================
+*/
+
+function openDrive(){
+
+    window.open(
+        DRIVE_URL,
+        "_blank",
+        "noopener,noreferrer"
+    );
+
+}
+
+
+/*
+=========================================================
+LOAD DRIVE FILES
+=========================================================
+*/
+
+async function loadFiles(){
+
+    const container =
+        document.getElementById("filesContainer");
+
+    const info =
+        document.getElementById("folderInfo");
+
+
+    if(!API_KEY){
+
+        container.innerHTML = `
+            <div class="loading"
+                 style="grid-column:1/-1">
+
+                <div style="font-size:25px;margin-bottom:12px">
+                    ☁
+                </div>
+
+                Add your Google Drive API key
+                to display the files here.
+
+            </div>
+        `;
+
+        info.innerText =
+            "Google Drive folder connected";
+
+        return;
+    }
+
+
+    try{
+
+        const url =
+        `https://www.googleapis.com/drive/v3/files` +
+        `?q='${FOLDER_ID}'+in+parents+and+trashed=false` +
+        `&fields=files(id,name,mimeType,size,webViewLink,iconLink)` +
+        `&key=${API_KEY}`;
+
+
+        const response =
+            await fetch(url);
+
+
+        if(!response.ok){
+            throw new Error("Drive API error");
+        }
+
+
+        const data =
+            await response.json();
+
+
+        container.innerHTML = "";
+
+
+        if(!data.files || data.files.length === 0){
+
+            container.innerHTML = `
+                <div class="loading"
+                     style="grid-column:1/-1">
+
+                    No files found.
+
+                </div>
+            `;
+
+            info.innerText =
+                "0 files";
+
+            return;
+        }
+
+
+        info.innerText =
+            `${data.files.length} files available`;
+
+
+        data.files.forEach(file => {
+
+            const item =
+                document.createElement("div");
+
+            item.className = "file";
+
+
+            const isFolder =
+                file.mimeType ===
+                "application/vnd.google-apps.folder";
+
+
+            item.innerHTML = `
+
+                <div class="file-icon">
+                    ${isFolder ? "📁" : "📄"}
+                </div>
+
+                <div class="file-name">
+                    ${escapeHTML(file.name)}
+                </div>
+
+                <div class="file-type">
+                    ${isFolder ? "FOLDER" : "FILE"}
+                </div>
+
+            `;
+
+
+            item.onclick = () => {
+
+                if(file.webViewLink){
+
+                    window.open(
+                        file.webViewLink,
+                        "_blank"
+                    );
+
+                }
+
+            };
+
+
+            container.appendChild(item);
+
+        });
+
+    }
+    catch(error){
+
+        console.error(error);
+
+        container.innerHTML = `
+
+            <div class="loading"
+                 style="grid-column:1/-1">
+
+                Unable to load Drive files.
+
+                <br><br>
+
+                Check your API key
+                and folder permissions.
+
+            </div>
+
+        `;
+
+        info.innerText =
+            "Connection error";
+
+    }
+
+}
+
+
+/*
+=========================================================
+SECURITY
+=========================================================
+*/
+
+function escapeHTML(text){
+
+    const div =
+        document.createElement("div");
+
+    div.textContent = text;
+
+    return div.innerHTML;
+
+}
+
+
+/*
+=========================================================
+START
+=========================================================
+*/
+
+loadFiles();
+
+</script>
+
+</body>
+</html>
