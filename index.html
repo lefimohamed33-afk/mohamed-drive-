@@ -1,322 +1,663 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<meta
+    name="viewport"
+    content="width=device-width, initial-scale=1.0"
+>
 
 <title>MOHAMED DRIVE</title>
 
+
 <style>
+
+/* =====================================================
+   RESET
+===================================================== */
+
 *{
     margin:0;
     padding:0;
     box-sizing:border-box;
 }
 
+
+/* =====================================================
+   VARIABLES
+===================================================== */
+
 :root{
-    --bg:#050711;
-    --cyan:#55e7ff;
-    --blue:#5d8cff;
-    --violet:#9b7cff;
-    --white:#f5f7ff;
-    --gray:#929bb8;
+
+    --bg:#05060b;
+
+    --orange:#ff6a21;
+    --orange2:#ff9b42;
+
+    --blue:#55dfff;
+    --violet:#947cff;
+
+    --white:#f7f8ff;
+    --gray:#9ba4bd;
+
 }
+
+
+/* =====================================================
+   BODY
+===================================================== */
 
 body{
+
     min-height:100vh;
-    font-family:Arial,Helvetica,sans-serif;
+
+    font-family:
+        Arial,
+        Helvetica,
+        sans-serif;
+
     color:var(--white);
+
     overflow-x:hidden;
 
+
     background:
-        radial-gradient(circle at 15% 15%,rgba(65,120,255,.20),transparent 28%),
-        radial-gradient(circle at 85% 15%,rgba(0,220,255,.14),transparent 25%),
-        radial-gradient(circle at 50% 100%,rgba(135,75,255,.18),transparent 35%),
-        var(--bg);
+
+        linear-gradient(
+            rgba(3,5,12,.72),
+            rgba(3,5,12,.88)
+        ),
+
+        url("https://images.unsplash.com/photo-1578632767115-351597cf2477?auto=format&fit=crop&w=2400&q=90")
+        center center /
+        cover
+        fixed
+        no-repeat;
+
 }
 
-/* Background grid */
+
+/* =====================================================
+   DARK CINEMATIC OVERLAY
+===================================================== */
+
+body::after{
+
+    content:"";
+
+    position:fixed;
+
+    inset:0;
+
+    pointer-events:none;
+
+    z-index:-1;
+
+
+    background:
+
+        radial-gradient(
+            circle at 15% 25%,
+            rgba(255,90,20,.18),
+            transparent 27%
+        ),
+
+        radial-gradient(
+            circle at 85% 20%,
+            rgba(65,160,255,.12),
+            transparent 28%
+        ),
+
+        radial-gradient(
+            circle at 50% 100%,
+            rgba(150,70,255,.13),
+            transparent 30%
+        );
+
+}
+
+
+/* =====================================================
+   GRID
+===================================================== */
 
 body::before{
+
     content:"";
+
     position:fixed;
+
     inset:0;
+
     pointer-events:none;
-    opacity:.11;
+
+    opacity:.08;
 
     background-image:
-        linear-gradient(rgba(255,255,255,.04) 1px,transparent 1px),
-        linear-gradient(90deg,rgba(255,255,255,.04) 1px,transparent 1px);
+
+        linear-gradient(
+            rgba(255,255,255,.05) 1px,
+            transparent 1px
+        ),
+
+        linear-gradient(
+            90deg,
+            rgba(255,255,255,.05) 1px,
+            transparent 1px
+        );
 
     background-size:50px 50px;
+
 }
 
-/* Ambient lights */
+
+/* =====================================================
+   AMBIENT LIGHTS
+===================================================== */
 
 .light{
+
     position:fixed;
+
     border-radius:50%;
-    filter:blur(90px);
+
+    filter:blur(100px);
+
     pointer-events:none;
+
+    z-index:-1;
+
 }
+
 
 .light.one{
-    width:300px;
-    height:300px;
-    background:#316cff;
-    left:-140px;
-    top:15%;
-    opacity:.22;
-}
 
-.light.two{
     width:330px;
     height:330px;
-    background:#7c40ff;
-    right:-150px;
-    bottom:5%;
-    opacity:.20;
+
+    left:-150px;
+    top:15%;
+
+    background:#ff5417;
+
+    opacity:.17;
+
 }
 
-/* Container */
+
+.light.two{
+
+    width:350px;
+    height:350px;
+
+    right:-160px;
+    bottom:5%;
+
+    background:#6d42ff;
+
+    opacity:.16;
+
+}
+
+
+/* =====================================================
+   CONTAINER
+===================================================== */
 
 .container{
-    width:min(1100px,92%);
+
+    width:min(
+        1120px,
+        92%
+    );
+
     margin:auto;
-    padding:32px 0 60px;
+
+    padding:
+        32px
+        0
+        65px;
+
 }
 
-/* Header */
+
+/* =====================================================
+   HEADER
+===================================================== */
 
 header{
+
     display:flex;
-    justify-content:space-between;
+
     align-items:center;
-    margin-bottom:70px;
+
+    justify-content:space-between;
+
+    margin-bottom:75px;
+
 }
+
 
 .logo{
-    font-size:20px;
-    font-weight:800;
+
+    font-size:21px;
+
+    font-weight:900;
+
     letter-spacing:2px;
+
+    text-shadow:
+        0 0 25px
+        rgba(255,100,30,.15);
+
 }
+
 
 .logo span{
-    color:var(--cyan);
+
+    color:var(--orange);
+
 }
+
 
 .status{
+
     display:flex;
+
     align-items:center;
+
     gap:8px;
 
-    padding:9px 14px;
+    padding:
+        9px
+        15px;
 
     border-radius:30px;
-
-    background:rgba(255,255,255,.04);
-    border:1px solid rgba(255,255,255,.10);
-
-    backdrop-filter:blur(15px);
-
-    color:#baffdc;
-    font-size:10px;
-    letter-spacing:1px;
-}
-
-.status-dot{
-    width:7px;
-    height:7px;
-    border-radius:50%;
-    background:#64edaa;
-    box-shadow:0 0 15px #64edaa;
-}
-
-/* Hero */
-
-.hero{
-    text-align:center;
-}
-
-.badge{
-    display:inline-block;
-
-    padding:9px 16px;
-
-    border-radius:30px;
-
-    color:#b9dcff;
-
-    background:rgba(255,255,255,.045);
-    border:1px solid rgba(255,255,255,.10);
-
-    backdrop-filter:blur(15px);
-
-    font-size:10px;
-    letter-spacing:1.5px;
-
-    margin-bottom:25px;
-}
-
-h1{
-    font-size:clamp(48px,8vw,86px);
-    line-height:.94;
-    letter-spacing:-4px;
 
     background:
+        rgba(255,255,255,.045);
+
+    border:
+        1px solid
+        rgba(255,255,255,.11);
+
+    backdrop-filter:
+        blur(20px);
+
+    color:#baffdd;
+
+    font-size:10px;
+
+    letter-spacing:1px;
+
+}
+
+
+.status-dot{
+
+    width:7px;
+    height:7px;
+
+    border-radius:50%;
+
+    background:#63eda8;
+
+    box-shadow:
+        0 0 15px
+        #63eda8;
+
+}
+
+
+/* =====================================================
+   HERO
+===================================================== */
+
+.hero{
+
+    text-align:center;
+
+}
+
+
+/* =====================================================
+   BADGE
+===================================================== */
+
+.badge{
+
+    display:inline-block;
+
+    padding:
+        9px
+        17px;
+
+    border-radius:30px;
+
+    color:#ffd3bb;
+
+    background:
+        rgba(255,90,20,.07);
+
+    border:
+        1px solid
+        rgba(255,130,70,.24);
+
+    backdrop-filter:
+        blur(20px);
+
+    font-size:10px;
+
+    letter-spacing:1.7px;
+
+    margin-bottom:26px;
+
+    box-shadow:
+        0 0 25px
+        rgba(255,90,20,.05);
+
+}
+
+
+/* =====================================================
+   TITLE
+===================================================== */
+
+h1{
+
+    font-size:
+        clamp(
+            48px,
+            8vw,
+            88px
+        );
+
+    line-height:.92;
+
+    letter-spacing:-4px;
+
+
+    background:
+
         linear-gradient(
             100deg,
-            #fff,
-            #b9dcff,
-            #62eaff,
-            #a789ff
+            #ffffff 5%,
+            #ffd8c1 35%,
+            #ff873b 65%,
+            #ff5220 100%
         );
 
     -webkit-background-clip:text;
+
     background-clip:text;
+
     color:transparent;
+
+
+    text-shadow:
+        0 0 50px
+        rgba(255,90,30,.15);
+
 }
 
+
+/* =====================================================
+   SUBTITLE
+===================================================== */
+
 .subtitle{
-    max-width:550px;
-    margin:22px auto 0;
+
+    max-width:600px;
+
+    margin:
+        25px
+        auto
+        0;
 
     color:var(--gray);
 
     font-size:14px;
-    line-height:1.7;
+
+    line-height:1.8;
+
 }
 
-/* Main glass */
+
+/* =====================================================
+   MAIN GLASS CARD
+===================================================== */
 
 .drive-card{
+
     position:relative;
+
     overflow:hidden;
 
-    margin:50px auto 0;
+    max-width:930px;
 
-    max-width:920px;
+    margin:
+        50px
+        auto
+        0;
 
-    padding:38px;
+    padding:40px;
 
-    border-radius:32px;
+    border-radius:34px;
+
 
     background:
+
         linear-gradient(
             145deg,
-            rgba(255,255,255,.105),
-            rgba(255,255,255,.035)
+            rgba(15,18,29,.74),
+            rgba(18,15,27,.45)
         );
 
-    border:1px solid rgba(255,255,255,.13);
 
-    backdrop-filter:blur(30px);
+    border:
+        1px solid
+        rgba(255,255,255,.14);
+
+
+    backdrop-filter:
+        blur(30px)
+        saturate(145%);
+
 
     box-shadow:
-        0 35px 100px rgba(0,0,0,.45),
-        inset 0 1px rgba(255,255,255,.10);
+
+        0 40px 110px
+        rgba(0,0,0,.60),
+
+        0 0 60px
+        rgba(255,80,20,.07),
+
+        inset
+        0 1px
+        rgba(255,255,255,.12);
+
 }
 
-/* Animated line */
+
+/* =====================================================
+   ANIMATED TOP LINE
+===================================================== */
 
 .drive-card::before{
+
     content:"";
 
     position:absolute;
 
     top:0;
-    left:-60%;
 
-    width:220%;
+    left:-70%;
+
+    width:240%;
+
     height:2px;
 
+
     background:
+
         linear-gradient(
             90deg,
             transparent,
-            var(--cyan),
-            var(--violet),
+            var(--orange),
+            var(--orange2),
+            var(--blue),
             transparent
         );
 
-    animation:moveLine 6s linear infinite;
+
+    animation:
+        topLine
+        6s
+        linear
+        infinite;
+
 }
 
-@keyframes moveLine{
+
+@keyframes topLine{
+
     from{
-        transform:translateX(-30%);
+        transform:
+            translateX(-30%);
     }
+
     to{
-        transform:translateX(30%);
+        transform:
+            translateX(30%);
     }
+
 }
 
-/* Drive logo */
+
+/* =====================================================
+   DRIVE LOGO
+===================================================== */
 
 .drive-logo{
+
     position:relative;
 
-    width:120px;
-    height:120px;
+    width:125px;
 
-    margin:0 auto 22px;
+    height:125px;
+
+    margin:
+        0
+        auto
+        24px;
+
 
     display:flex;
+
     align-items:center;
+
     justify-content:center;
 
-    border-radius:34px;
+
+    border-radius:36px;
+
 
     background:
+
         linear-gradient(
             145deg,
-            rgba(255,255,255,.10),
-            rgba(255,255,255,.025)
+            rgba(255,255,255,.11),
+            rgba(255,80,20,.045)
         );
 
-    border:1px solid rgba(255,255,255,.12);
+
+    border:
+        1px solid
+        rgba(255,255,255,.13);
+
 
     box-shadow:
-        0 0 50px rgba(75,180,255,.14),
-        inset 0 0 30px rgba(255,255,255,.04);
 
-    animation:float 4s ease-in-out infinite;
+        0 0 55px
+        rgba(255,90,30,.13),
+
+        inset
+        0 0 30px
+        rgba(255,255,255,.035);
+
+
+    animation:
+        logoFloat
+        4s
+        ease-in-out
+        infinite;
+
 
     overflow:hidden;
+
 }
 
-@keyframes float{
-    0%,100%{
-        transform:translateY(0);
+
+@keyframes logoFloat{
+
+    0%,
+    100%{
+        transform:
+            translateY(0);
     }
 
     50%{
-        transform:translateY(-8px);
+        transform:
+            translateY(-8px);
     }
+
 }
+
+
+/* =====================================================
+   DRIVE SVG
+===================================================== */
 
 .drive-logo svg{
-    width:70px;
-    height:70px;
+
+    width:72px;
+
+    height:72px;
 
     filter:
-        drop-shadow(0 0 18px rgba(75,200,255,.40));
+
+        drop-shadow(
+            0 0 18px
+            rgba(80,205,255,.45)
+        );
+
 }
 
-/* Shine */
+
+/* =====================================================
+   MOVING SHINE
+===================================================== */
 
 .shine{
+
     position:absolute;
 
     width:35%;
-    height:170%;
 
-    left:-80%;
-    top:-35%;
+    height:180%;
 
-    transform:rotate(25deg);
+    top:-40%;
+
+    left:-90%;
+
+    transform:
+        rotate(25deg);
+
 
     background:
+
         linear-gradient(
             90deg,
             transparent,
@@ -324,495 +665,852 @@ h1{
             transparent
         );
 
-    filter:blur(4px);
 
-    animation:shine 3.5s infinite;
+    filter:
+        blur(4px);
+
+
+    animation:
+        shine
+        3.7s
+        infinite;
+
 }
+
 
 @keyframes shine{
-    0%,35%{
-        left:-80%;
+
+    0%,
+    35%{
+        left:-90%;
     }
 
-    75%,100%{
+    75%,
+    100%{
         left:140%;
     }
+
 }
 
-/* Folder title */
+
+/* =====================================================
+   FOLDER TITLE
+===================================================== */
 
 .folder-title{
-    font-size:22px;
-    font-weight:750;
+
+    font-size:23px;
+
+    font-weight:800;
 
     margin-bottom:8px;
+
 }
 
+
 .folder-info{
-    color:#7f89a6;
+
+    color:#7f89a5;
+
     font-size:11px;
 
     margin-bottom:28px;
+
 }
 
-/* Files */
+
+/* =====================================================
+   FILES
+===================================================== */
 
 .files-container{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
 
     gap:13px;
 
-    text-align:left;
+    margin-bottom:27px;
 
-    margin-bottom:25px;
 }
 
+
 .file{
+
     position:relative;
+
+    min-height:115px;
 
     padding:18px;
 
-    min-height:105px;
+    border-radius:19px;
 
-    border-radius:18px;
 
-    background:rgba(0,0,0,.16);
+    background:
+        rgba(3,5,12,.47);
 
-    border:1px solid rgba(255,255,255,.08);
 
-    transition:.3s;
+    border:
+        1px solid
+        rgba(255,255,255,.085);
+
+
+    cursor:pointer;
+
+    transition:
+        .3s;
+
 
     overflow:hidden;
+
 }
 
-.file:hover{
-    transform:translateY(-5px);
 
-    border-color:rgba(85,231,255,.28);
+.file::after{
 
-    box-shadow:
-        0 15px 35px rgba(0,0,0,.25);
-}
+    content:"";
 
-.file-icon{
-    font-size:22px;
-    margin-bottom:12px;
-}
+    position:absolute;
 
-.file-name{
-    font-size:12px;
-    font-weight:700;
+    width:100px;
 
-    white-space:nowrap;
-    overflow:hidden;
-    text-overflow:ellipsis;
-}
+    height:100px;
 
-.file-type{
-    color:#707b99;
+    right:-50px;
 
-    font-size:10px;
-
-    margin-top:6px;
-}
-
-/* Loading */
-
-.loading{
-    padding:35px;
-
-    color:#78839f;
-
-    font-size:12px;
-}
-
-.spinner{
-    width:25px;
-    height:25px;
-
-    margin:0 auto 12px;
+    top:-50px;
 
     border-radius:50%;
 
-    border:2px solid rgba(255,255,255,.1);
+    background:
+        rgba(255,90,20,.08);
 
-    border-top-color:var(--cyan);
+    filter:
+        blur(25px);
 
-    animation:spin .8s linear infinite;
 }
+
+
+.file:hover{
+
+    transform:
+        translateY(-6px);
+
+
+    border-color:
+        rgba(255,120,60,.35);
+
+
+    box-shadow:
+
+        0 18px 45px
+        rgba(0,0,0,.40),
+
+        0 0 25px
+        rgba(255,80,20,.07);
+
+}
+
+
+.file-icon{
+
+    font-size:23px;
+
+    margin-bottom:12px;
+
+}
+
+
+.file-name{
+
+    font-size:12px;
+
+    font-weight:700;
+
+    white-space:nowrap;
+
+    overflow:hidden;
+
+    text-overflow:ellipsis;
+
+}
+
+
+.file-type{
+
+    color:#717c99;
+
+    font-size:10px;
+
+    margin-top:7px;
+
+}
+
+
+/* =====================================================
+   LOADING
+===================================================== */
+
+.loading{
+
+    grid-column:
+        1 /
+        -1;
+
+    padding:40px;
+
+    color:#77819c;
+
+    font-size:12px;
+
+}
+
+
+.spinner{
+
+    width:27px;
+
+    height:27px;
+
+    margin:
+        0
+        auto
+        14px;
+
+    border-radius:50%;
+
+
+    border:
+        2px
+        solid
+        rgba(255,255,255,.10);
+
+
+    border-top-color:
+        var(--orange);
+
+
+    animation:
+        spin
+        .8s
+        linear
+        infinite;
+
+}
+
 
 @keyframes spin{
+
     to{
-        transform:rotate(360deg);
+        transform:
+            rotate(360deg);
     }
+
 }
 
-/* Buttons */
+
+/* =====================================================
+   BUTTONS
+===================================================== */
 
 .buttons{
+
     display:flex;
+
     justify-content:center;
+
+    align-items:center;
+
     gap:12px;
+
     flex-wrap:wrap;
+
 }
 
+
 button{
+
     border:none;
+
     cursor:pointer;
 
-    padding:14px 25px;
+    padding:
+        15px
+        27px;
 
     border-radius:15px;
 
     font-size:12px;
-    font-weight:750;
 
-    transition:.25s;
+    font-weight:800;
+
+    transition:
+        .25s;
+
 }
+
+
+/* OPEN */
 
 .open{
-    color:#03101b;
+
+    color:white;
+
 
     background:
+
         linear-gradient(
             135deg,
-            #67efff,
-            #6da7ff,
-            #a98aff
+            #ff9c45,
+            #ff6325,
+            #d83b16
         );
 
+
     box-shadow:
-        0 12px 35px rgba(74,170,255,.25);
+
+        0 13px 38px
+        rgba(255,80,20,.28);
+
 }
+
 
 .open:hover{
-    transform:translateY(-3px);
+
+    transform:
+        translateY(-3px);
+
 
     box-shadow:
-        0 18px 45px rgba(74,170,255,.4);
+
+        0 20px 50px
+        rgba(255,80,20,.45);
+
 }
+
+
+/* REFRESH */
 
 .refresh{
+
     color:#dce5ff;
 
-    background:rgba(255,255,255,.055);
+    background:
+        rgba(255,255,255,.055);
 
-    border:1px solid rgba(255,255,255,.11);
+    border:
+        1px solid
+        rgba(255,255,255,.12);
+
 }
+
 
 .refresh:hover{
-    background:rgba(255,255,255,.10);
+
+    background:
+        rgba(255,255,255,.10);
+
+    transform:
+        translateY(-3px);
+
 }
 
-/* Features */
+
+/* =====================================================
+   FEATURES
+===================================================== */
 
 .features{
+
     display:grid;
-    grid-template-columns:repeat(3,1fr);
+
+    grid-template-columns:
+        repeat(
+            3,
+            1fr
+        );
 
     gap:15px;
 
     margin-top:20px;
+
 }
+
 
 .feature{
-    padding:20px;
 
-    border-radius:21px;
+    padding:21px;
 
-    background:rgba(255,255,255,.035);
+    border-radius:22px;
 
-    border:1px solid rgba(255,255,255,.07);
+    background:
+        rgba(255,255,255,.035);
 
-    backdrop-filter:blur(15px);
+    border:
+        1px solid
+        rgba(255,255,255,.075);
+
+    backdrop-filter:
+        blur(18px);
 
     text-align:left;
+
+    transition:
+        .3s;
+
 }
+
+
+.feature:hover{
+
+    transform:
+        translateY(-4px);
+
+    border-color:
+        rgba(255,110,50,.20);
+
+}
+
 
 .feature-icon{
-    font-size:21px;
-    margin-bottom:11px;
+
+    font-size:22px;
+
+    margin-bottom:12px;
+
 }
+
 
 .feature h3{
+
     font-size:12px;
-    margin-bottom:7px;
+
+    margin-bottom:8px;
+
 }
 
+
 .feature p{
+
     color:#7f89a5;
 
     font-size:10px;
+
     line-height:1.7;
+
 }
 
-/* Footer */
+
+/* =====================================================
+   FOOTER
+===================================================== */
 
 footer{
+
     text-align:center;
 
-    margin-top:30px;
+    margin-top:32px;
 
-    color:#505a73;
+    color:#515b74;
 
     font-size:9px;
 
     letter-spacing:1.5px;
+
 }
 
-/* Mobile */
+
+/* =====================================================
+   MOBILE
+===================================================== */
 
 @media(max-width:700px){
+
+    .container{
+        padding-top:25px;
+    }
+
 
     header{
         margin-bottom:50px;
     }
 
+
     .status{
         display:none;
     }
 
+
     h1{
+
         font-size:53px;
+
+        letter-spacing:-3px;
+
     }
+
+
+    .subtitle{
+
+        font-size:13px;
+
+    }
+
 
     .drive-card{
-        padding:27px 18px;
+
+        padding:
+            28px
+            18px;
+
+        border-radius:27px;
+
     }
+
 
     .files-container{
+
         grid-template-columns:1fr;
+
     }
 
+
     .features{
+
         grid-template-columns:1fr;
+
     }
+
 }
+
+
+/* =====================================================
+   VERY SMALL SCREENS
+===================================================== */
+
+@media(max-width:400px){
+
+    h1{
+        font-size:45px;
+    }
+
+    .drive-logo{
+        width:110px;
+        height:110px;
+    }
+
+}
+
 </style>
+
 </head>
 
 
 <body>
 
+
 <div class="light one"></div>
+
 <div class="light two"></div>
 
 
 <div class="container">
 
+
+<!-- ===================================================
+     HEADER
+=================================================== -->
+
 <header>
 
     <div class="logo">
-        MOHAMED <span>DRIVE</span>
+
+        MOHAMED
+        <span>DRIVE</span>
+
     </div>
 
+
     <div class="status">
+
         <div class="status-dot"></div>
+
         ONLINE
+
     </div>
 
 </header>
 
 
+
+<!-- ===================================================
+     HERO
+=================================================== -->
+
 <section class="hero">
 
+
     <div class="badge">
-        GOOGLE DRIVE • FILE PORTAL
+
+        NARUTO • GOOGLE DRIVE • FILE PORTAL
+
     </div>
+
 
 
     <h1>
+
         MOHAMED<br>
+
         DRIVE
+
     </h1>
 
 
+
     <p class="subtitle">
-        Your files, beautifully organized in one premium interface.
+
+        Your Google Drive files
+        in a cinematic glass interface.
+
     </p>
 
 
-    <div class="drive-card">
 
-        <!-- Drive logo -->
+<!-- ===================================================
+     DRIVE CARD
+=================================================== -->
 
-        <div class="drive-logo">
-
-            <div class="shine"></div>
-
-            <svg viewBox="0 0 90 90">
-
-                <polygon
-                    points="32,12 48,12 76,60 60,60"
-                    fill="#55b9ff"
-                />
-
-                <polygon
-                    points="32,12 14,44 23,60 41,28"
-                    fill="#62df9a"
-                />
-
-                <polygon
-                    points="23,60 76,60 67,76 14,76"
-                    fill="#a07dff"
-                />
-
-            </svg>
-
-        </div>
+<div class="drive-card">
 
 
-        <div class="folder-title">
-            My Google Drive
-        </div>
+    <!-- DRIVE LOGO -->
+
+    <div class="drive-logo">
+
+        <div class="shine"></div>
 
 
-        <div class="folder-info" id="folderInfo">
-            Loading files...
-        </div>
+        <svg viewBox="0 0 90 90">
 
+            <polygon
+                points="32,12 48,12 76,60 60,60"
+                fill="#55b9ff"
+            />
 
-        <!-- Files will appear here -->
+            <polygon
+                points="32,12 14,44 23,60 41,28"
+                fill="#62df9a"
+            />
 
-        <div
-            class="files-container"
-            id="filesContainer">
+            <polygon
+                points="23,60 76,60 67,76 14,76"
+                fill="#a07dff"
+            />
 
-            <div class="loading">
-
-                <div class="spinner"></div>
-
-                Loading Drive content...
-
-            </div>
-
-        </div>
-
-
-        <div class="buttons">
-
-            <button
-                class="open"
-                onclick="openDrive()">
-
-                OPEN GOOGLE DRIVE ↗
-
-            </button>
-
-
-            <button
-                class="refresh"
-                onclick="loadFiles()">
-
-                REFRESH
-
-            </button>
-
-        </div>
+        </svg>
 
     </div>
 
 
-    <div class="features">
 
-        <div class="feature">
+    <!-- FOLDER TITLE -->
 
-            <div class="feature-icon">
-                ◈
-            </div>
+    <div class="folder-title">
 
-            <h3>
-                LIQUID GLASS
-            </h3>
-
-            <p>
-                Premium glass interface with
-                futuristic depth and reflections.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                ✦
-            </div>
-
-            <h3>
-                LIVE FILES
-            </h3>
-
-            <p>
-                Display your Google Drive
-                content directly on the homepage.
-            </p>
-
-        </div>
-
-
-        <div class="feature">
-
-            <div class="feature-icon">
-                ↗
-            </div>
-
-            <h3>
-                DIRECT ACCESS
-            </h3>
-
-            <p>
-                Open the original Drive folder
-                with one click.
-            </p>
-
-        </div>
+        My Google Drive
 
     </div>
 
-</section>
 
 
-<footer>
-    MOHAMED DRIVE • GOOGLE DRIVE PORTAL
-</footer>
+    <div
+        class="folder-info"
+        id="folderInfo">
+
+        Loading Drive content...
+
+    </div>
+
+
+
+    <!-- =================================================
+         FILES WILL APPEAR HERE
+    ================================================= -->
+
+    <div
+        class="files-container"
+        id="filesContainer">
+
+
+        <div class="loading">
+
+            <div class="spinner"></div>
+
+            Loading Drive content...
+
+        </div>
+
+
+    </div>
+
+
+
+    <!-- BUTTONS -->
+
+    <div class="buttons">
+
+
+        <button
+            class="open"
+            onclick="openDrive()">
+
+            OPEN GOOGLE DRIVE ↗
+
+        </button>
+
+
+        <button
+            class="refresh"
+            onclick="loadFiles()">
+
+            REFRESH
+
+        </button>
+
+
+    </div>
+
 
 </div>
 
 
+
+<!-- ===================================================
+     FEATURES
+=================================================== -->
+
+<div class="features">
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            ◈
+        </div>
+
+        <h3>
+            LIQUID GLASS
+        </h3>
+
+        <p>
+
+            Premium glass interface
+            with cinematic depth,
+            reflections and neon lighting.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            ✦
+        </div>
+
+        <h3>
+            NARUTO THEME
+        </h3>
+
+        <p>
+
+            Dark anime atmosphere
+            with orange chakra-inspired
+            lighting.
+
+        </p>
+
+    </div>
+
+
+
+    <div class="feature">
+
+        <div class="feature-icon">
+            ↗
+        </div>
+
+        <h3>
+            DIRECT ACCESS
+        </h3>
+
+        <p>
+
+            Open your original
+            Google Drive folder
+            instantly.
+
+        </p>
+
+    </div>
+
+
+</div>
+
+
+</section>
+
+
+
+<footer>
+
+    MOHAMED DRIVE • GOOGLE DRIVE PORTAL
+
+</footer>
+
+
+</div>
+
+
+
 <script>
 
-/*
-=========================================================
-YOUR GOOGLE DRIVE FOLDER
-=========================================================
-*/
+/* =====================================================
+   GOOGLE DRIVE FOLDER
+===================================================== */
 
 const DRIVE_URL =
 "https://drive.google.com/drive/folders/1yMuL-AUheVRhz0XHdOcAwX9YCxTVJ0Up?usp=drive_link";
 
 
-/*
-=========================================================
-GOOGLE DRIVE API
-
-ضع API KEY هنا إذا أردت جلب أسماء الملفات
-وتفاصيلها تلقائيًا من Google Drive.
-=========================================================
-*/
-
-const API_KEY = "";
+/* =====================================================
+   FOLDER ID
+===================================================== */
 
 const FOLDER_ID =
 "1yMuL-AUheVRhz0XHdOcAwX9YCxTVJ0Up";
 
 
-/*
-=========================================================
-OPEN DRIVE
-=========================================================
-*/
+/* =====================================================
+   GOOGLE DRIVE API KEY
+
+   ضع API KEY هنا عندما نجهز الربط.
+===================================================== */
+
+const API_KEY = "";
+
+
+/* =====================================================
+   OPEN DRIVE
+===================================================== */
 
 function openDrive(){
 
@@ -825,195 +1523,60 @@ function openDrive(){
 }
 
 
-/*
-=========================================================
-LOAD DRIVE FILES
-=========================================================
-*/
+/* =====================================================
+   LOAD FILES
+===================================================== */
 
 async function loadFiles(){
 
     const container =
-        document.getElementById("filesContainer");
+        document.getElementById(
+            "filesContainer"
+        );
+
 
     const info =
-        document.getElementById("folderInfo");
+        document.getElementById(
+            "folderInfo"
+        );
 
+
+    /* -----------------------------------------------
+       API KEY NOT ADDED
+    ------------------------------------------------ */
 
     if(!API_KEY){
 
         container.innerHTML = `
-            <div class="loading"
-                 style="grid-column:1/-1">
 
-                <div style="font-size:25px;margin-bottom:12px">
+            <div
+                class="loading"
+                style="
+                    grid-column:1/-1;
+                    text-align:center;
+                "
+            >
+
+                <div
+                    style="
+                        font-size:28px;
+                        margin-bottom:12px;
+                    "
+                >
                     ☁
                 </div>
 
-                Add your Google Drive API key
-                to display the files here.
+                Google Drive folder
 
-            </div>
-        `;
+                <br>
 
-        info.innerText =
-            "Google Drive folder connected";
-
-        return;
-    }
-
-
-    try{
-
-        const url =
-        `https://www.googleapis.com/drive/v3/files` +
-        `?q='${FOLDER_ID}'+in+parents+and+trashed=false` +
-        `&fields=files(id,name,mimeType,size,webViewLink,iconLink)` +
-        `&key=${API_KEY}`;
-
-
-        const response =
-            await fetch(url);
-
-
-        if(!response.ok){
-            throw new Error("Drive API error");
-        }
-
-
-        const data =
-            await response.json();
-
-
-        container.innerHTML = "";
-
-
-        if(!data.files || data.files.length === 0){
-
-            container.innerHTML = `
-                <div class="loading"
-                     style="grid-column:1/-1">
-
-                    No files found.
-
-                </div>
-            `;
-
-            info.innerText =
-                "0 files";
-
-            return;
-        }
-
-
-        info.innerText =
-            `${data.files.length} files available`;
-
-
-        data.files.forEach(file => {
-
-            const item =
-                document.createElement("div");
-
-            item.className = "file";
-
-
-            const isFolder =
-                file.mimeType ===
-                "application/vnd.google-apps.folder";
-
-
-            item.innerHTML = `
-
-                <div class="file-icon">
-                    ${isFolder ? "📁" : "📄"}
-                </div>
-
-                <div class="file-name">
-                    ${escapeHTML(file.name)}
-                </div>
-
-                <div class="file-type">
-                    ${isFolder ? "FOLDER" : "FILE"}
-                </div>
-
-            `;
-
-
-            item.onclick = () => {
-
-                if(file.webViewLink){
-
-                    window.open(
-                        file.webViewLink,
-                        "_blank"
-                    );
-
-                }
-
-            };
-
-
-            container.appendChild(item);
-
-        });
-
-    }
-    catch(error){
-
-        console.error(error);
-
-        container.innerHTML = `
-
-            <div class="loading"
-                 style="grid-column:1/-1">
-
-                Unable to load Drive files.
-
-                <br><br>
-
-                Check your API key
-                and folder permissions.
+                Click "OPEN GOOGLE DRIVE"
+                to access the files.
 
             </div>
 
         `;
 
+
         info.innerText =
-            "Connection error";
-
-    }
-
-}
-
-
-/*
-=========================================================
-SECURITY
-=========================================================
-*/
-
-function escapeHTML(text){
-
-    const div =
-        document.createElement("div");
-
-    div.textContent = text;
-
-    return div.innerHTML;
-
-}
-
-
-/*
-=========================================================
-START
-=========================================================
-*/
-
-loadFiles();
-
-</script>
-
-</body>
-</html>
+            "Google Drive fold
